@@ -8,7 +8,7 @@ type Props = {
     number: string;
     setNumber?: any;
 }
-const numbers: Array<number> = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];//на уровень выше
+const numbers: Array<number> = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 
 const number = ({number, setNumber} : Props) => {
@@ -21,8 +21,6 @@ const number = ({number, setNumber} : Props) => {
             else {
                 setNumber(`${number}${num}`);
             }
-            //data = 0 ? onClick(num) : onClick(`${data}${num}`);
-            // onClick(data + num);
         }
         }>{num}</Button>)
     });
