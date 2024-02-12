@@ -33,9 +33,9 @@ const App:React.FunctionComponent = () => {
               <Number number={number} setNumber={setNumber}/>
               <Box display='flex' flexDirection='row'>
                   <CountButton data = {number} expression={'+'} applyExpression = {applyExpression}/>
-                  {/*<CountButton expression={'-'}/>*/}
-                  {/*<CountButton expression={'*'}/>*/}
-                  {/*<CountButton expression={'/'}/>*/}
+                  <CountButton data = {number} expression={'-'} applyExpression = {applyExpression}/>
+                  <CountButton data = {number} expression={'*'} applyExpression = {applyExpression}/>
+                  <CountButton data = {number} expression={'/'} applyExpression = {applyExpression}/>
               </Box>
           </Box>
       </Box>
