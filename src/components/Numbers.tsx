@@ -8,7 +8,7 @@ type Props = {
     number: string;
     setNumber?: any;
 }
-const numbers: Array<number> = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+const numbers: Array<string> = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '0', ','];
 
 
 const number = ({number, setNumber} : Props) => {

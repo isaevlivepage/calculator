@@ -1,10 +1,13 @@
 import {Box, Input, Text} from "@chakra-ui/react";
-import React from 'react';
-import { useState } from "react";
+import React, {useRef} from 'react';
+import { useState, useEffect } from "react";
 
 const InputCalc = () => {
     const [result, setResult] = useState('');
     const [counts, setCounts] = useState('');
+    //const inputRef = useRef();
+    // console.log(document.querySelector(".chakra-input.css-1uwy1eh"));
+    // useEffect(() => {document.querySelector(".chakra-input.css-1uwy1eh").focus()});
 
     const updateCounts = (e: any) => {
         const expressions = /[0-9]|\)/;
