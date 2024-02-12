@@ -12,7 +12,7 @@ const App:React.FunctionComponent = () => {
 
     const [number, setNumber] = useState('0');
     const [result, setResult] = useState('');
-    const [calcType, setCalcType] = useState('ClickCalc');
+    const [calcType, setCalcType] = useState('InputCalc');
 
     const applyExpression = (countedNumber: string) => {
         setNumber(countedNumber);
@@ -28,7 +28,7 @@ const App:React.FunctionComponent = () => {
     switch (calcType) {
         case 'ClickCalc':
             calculator =
-                <Box display='flex' gap='5px' flexDirection='column' justifyContent='center' alignItems='baseline' w='200px'>
+                <Box display='flex' gap='5px' flexDirection='column' justifyContent='center' alignItems='baseline' w='250px'>
                     <Box display='flex'  w='100%' bg = 'gray.50' borderRadius='8px'>
                         <Text display='flex' justifyContent='start' alignItems='center'  w='100%' h='38px' px='4px' >
                             {number}
@@ -46,7 +46,9 @@ const App:React.FunctionComponent = () => {
                             <CountButton data = {number} expression={'*'} applyExpression = {applyExpression}/>
                             <CountButton data = {number} expression={'/'} applyExpression = {applyExpression}/>
                         </Box>
-                        <Button m = '4px' bg = 'tomato' onClick={() => {setResult(eval(number))}}>=</Button>
+                        <Button m = '4px' bg = 'tomato' onClick={() => {setResult(eval(number));
+                        setNumber('0');
+                        }}>=</Button>
                     </Box>
                 </Box>;
             break;
@@ -54,7 +56,7 @@ const App:React.FunctionComponent = () => {
             calculator = <InputCalc/>;
             break;
         default:
-            calculator = '123';
+            calculator = <InputCalc/>;
     }
 return(
     <div className="App">
