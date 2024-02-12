@@ -1,5 +1,5 @@
 import './App.css';
-import { Box, Text } from '@chakra-ui/react'
+import {Box, Button, Text} from '@chakra-ui/react'
 import {useState} from "react";
 import Number from "./components/numbers";
 import CountButton from "./components/countbutton";
@@ -30,13 +30,17 @@ const App:React.FunctionComponent = () => {
                   </Text>
               </Box>
 
-              <Number number={number} setNumber={setNumber}/>
-              <Box display='flex' flexDirection='row'>
-                  <CountButton data = {number} expression={'+'} applyExpression = {applyExpression}/>
-                  <CountButton data = {number} expression={'-'} applyExpression = {applyExpression}/>
-                  <CountButton data = {number} expression={'*'} applyExpression = {applyExpression}/>
-                  <CountButton data = {number} expression={'/'} applyExpression = {applyExpression}/>
+              <Box display='flex'>
+                  <Number number={number} setNumber={setNumber}/>
+                  <Box display='flex' flexDirection='column'>
+                      <CountButton data = {number} expression={'+'} applyExpression = {applyExpression}/>
+                      <CountButton data = {number} expression={'-'} applyExpression = {applyExpression}/>
+                      <CountButton data = {number} expression={'*'} applyExpression = {applyExpression}/>
+                      <CountButton data = {number} expression={'/'} applyExpression = {applyExpression}/>
+                  </Box>
+                  <Button m = '4px' bg = 'tomato' onClick={() => {setResult(eval(number))}}>=</Button>
               </Box>
+
           </Box>
       </Box>
 
