@@ -6,6 +6,7 @@ import CountButton from "./components/CountButton";
 import {data} from "cheerio/lib/api/attributes";
 import InputCalc from "./components/InputCalc";
 import Calculator from "./components/Calculator";
+import History from "./components/History";
 
 
 const App:React.FunctionComponent = () => {
@@ -13,6 +14,8 @@ const App:React.FunctionComponent = () => {
     const [number, setNumber] = useState('0');
     const [result, setResult] = useState('');
     const [calcType, setCalcType] = useState('InputCalc');
+    const [history, setHistory] = useState([])
+
 
     const applyExpression = (countedNumber: string) => {
         setNumber(countedNumber);
@@ -22,6 +25,11 @@ const App:React.FunctionComponent = () => {
     const calcTypeChange = () => {
         calcType == 'ClickCalc' ? setCalcType('InputCalc') : setCalcType('ClickCalc');
     };
+
+    const updateHistory = (calcResult: string) => {
+        setHistory(history.concat(eval(calcResult)));
+    }
+
 
     let calculator;
 
@@ -46,21 +54,27 @@ const App:React.FunctionComponent = () => {
                             <CountButton data = {number} expression={'*'} applyExpression = {applyExpression}/>
                             <CountButton data = {number} expression={'/'} applyExpression = {applyExpression}/>
                         </Box>
-                        <Button m = '4px' bg = 'tomato' onClick={() => {setResult(eval(number));
+                        <Button m = '4px' bg = 'tomato' onClick={() => {
+                            const result = eval(number);
+                            setResult(eval(number));
                         setNumber('0');
+                        updateHistory(result);
                         }}>=</Button>
                     </Box>
                 </Box>;
             break;
         case 'InputCalc':
-            calculator = <InputCalc/>;
+            calculator = <InputCalc updateHistory = {updateHistory}/>;
             break;
-        default:
-            calculator = <InputCalc/>;
+        // default:
+        //     calculator = <InputCalc/>;
     }
 return(
     <div className="App">
       <Box display='flex' flexDirection='column' justifyContent = 'center' alignItems='center' h='100vh'>
+          <Box m='10px'>
+              <History data={history}/>
+          </Box>
           {/*switchMode*/}
           <Box display='flex' flexDirection='column' justifyContent='center' m='10px'>
               <Button onClick={calcTypeChange}>
