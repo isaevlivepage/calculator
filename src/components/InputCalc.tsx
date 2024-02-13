@@ -26,6 +26,7 @@ const InputCalc = ({updateHistory}: Props) => {
         {
             // debugger;
             updateHistory(counts);
+            setCounts('');
         }
     }
 

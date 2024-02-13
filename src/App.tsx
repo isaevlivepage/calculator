@@ -27,6 +27,8 @@ const App:React.FunctionComponent = () => {
     };
 
     const updateHistory = (calcResult: string) => {
+        debugger;
+        if (history.length > 6) {history.shift()}
         setHistory(history.concat(eval(calcResult)));
     }
 
