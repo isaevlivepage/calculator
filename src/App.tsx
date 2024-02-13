@@ -1,5 +1,6 @@
 import './App.css';
 import {Box, Button, Text} from '@chakra-ui/react'
+import { HamburgerIcon } from '@chakra-ui/icons'
 import {useState} from "react";
 import Number from "./components/Numbers";
 import CountButton from "./components/CountButton";
@@ -73,8 +74,12 @@ const App:React.FunctionComponent = () => {
     }
 return(
     <div className="App">
-      <Box display='flex' flexDirection='column' justifyContent = 'center' alignItems='center' h='100vh'>
-          <Box m='10px'>
+        <Box display='flex' flexDirection='column' justifyContent = 'center' alignItems='center' h='100vh'>
+            <Box h='90px'>
+                <HamburgerIcon />
+                Тут будет меню с выбором типа конвертера
+            </Box>
+            <Box m='10px'>
               <History data={history}/>
           </Box>
           {/*switchMode*/}
