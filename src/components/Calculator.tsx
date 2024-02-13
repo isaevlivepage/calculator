@@ -30,7 +30,7 @@ const Calculator = () => {
             calculator = '123';
             break;
         case 'InputCalc':
-            calculator = <InputCalc/>;
+            //calculator = <InputCalc/>;
             break;
         default:
             calculator = '123';
