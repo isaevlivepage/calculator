@@ -8,6 +8,7 @@ import {data} from "cheerio/lib/api/attributes";
 import InputCalc from "./components/InputCalc";
 import Calculator from "./components/Calculator";
 import History from "./components/History";
+import Menu from "./components/Menu";
 
 
 const App:React.FunctionComponent = () => {
@@ -28,10 +29,11 @@ const App:React.FunctionComponent = () => {
     };
 
     const updateHistory = (calcResult: string) => {
-        debugger;
+        // debugger;
         if (history.length > 6) {history.shift()}
         setHistory(history.concat(eval(calcResult)));
     }
+
 
 
     let calculator;
@@ -75,11 +77,11 @@ const App:React.FunctionComponent = () => {
 return(
     <div className="App">
         <Box display='flex' flexDirection='column' justifyContent = 'center' alignItems='center' h='100vh'>
-            <Box h='90px'>
-                <HamburgerIcon />
-                Тут будет меню с выбором типа конвертера
+            <Box display='flex' h='90px'>
+                {/*<HamburgerIcon w='45px' h='45px' p='5px' m='5px' borderRadius='5px'/>*/}
+                <Menu/>
             </Box>
-            <Box m='10px'>
+            <Box display='flex'  flex-direction = 'row' m='10px'>
               <History data={history}/>
           </Box>
           {/*switchMode*/}
