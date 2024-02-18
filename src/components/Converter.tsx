@@ -4,9 +4,13 @@ import Calculator from "./Calculator";
 import {HamburgerIcon, SettingsIcon} from "@chakra-ui/icons";
 import Money from "./Money";
 import Distance from "./Distance";
-
+import { useSelector, useDispatch } from 'react-redux'
+import { updateHistory, historyState } from '../historySlice'
 
 const Converter = () => {
+
+    const history = useSelector(historyState);
+    const dispatch = useDispatch();
 
     const dataMoney: Array<string> = ['Доллар США', 'Рубли'];
     const dataDistance: Array<string> = ['Метры', 'Сантиметры'];
@@ -49,6 +53,7 @@ const Converter = () => {
 
     return (
         <Flex justifyContent='center' alignItems='center' flexDirection='column' gap='10px' w='100%'>
+            <Button>Add to History</Button>
             <Menu/>
             {converter}
         </Flex>
