@@ -9,6 +9,8 @@ import InputCalc from "./components/InputCalc";
 import Calculator from "./components/Calculator";
 import History from "./components/History";
 import Menu from "./components/Menu";
+import ClickCalc from "./components/ClickCalc";
+import Converter from "./components/Converter";
 
 
 const App:React.FunctionComponent = () => {
@@ -16,17 +18,16 @@ const App:React.FunctionComponent = () => {
     const [number, setNumber] = useState('0');
     const [result, setResult] = useState('');
     const [calcType, setCalcType] = useState('InputCalc');
-    const [history, setHistory] = useState([])
+    const [history, setHistory] = useState([]);
+    const [mode, setMode] = useState('Calculator')
+
+
 
 
     const applyExpression = (countedNumber: string) => {
         setNumber(countedNumber);
         setResult(eval(number));
     }
-
-    const calcTypeChange = () => {
-        calcType == 'ClickCalc' ? setCalcType('InputCalc') : setCalcType('ClickCalc');
-    };
 
     const updateHistory = (calcResult: string) => {
         // debugger;
@@ -36,63 +37,66 @@ const App:React.FunctionComponent = () => {
 
 
 
+    const changeAppType = (mode: string) => {
+        // debugger;
+        mode == 'calculator' ? setMode('Converter') : setMode('Calculator');
+        console.log(setMode);
+    }
+    const calcTypeChange = () => {
+        calcType == 'ClickCalc' ? setCalcType('InputCalc') : setCalcType('ClickCalc');
+    };
+
+    let application;
     let calculator;
+    switch (mode) {
+        case 'Calculator':
+            application =  <Calculator calculator={calculator} calcTypeChange={calcTypeChange} history={history}/>;
+            // console.log(application);
+            break;
+        case 'Converter':
+            application = <Converter/>
+            // console.log(application);
+            break;
+        default:
+            application =  <Calculator calculator={calculator} calcTypeChange={calcTypeChange} history={history}/>;
+            // console.log(application);
+            break;
+    }
+
+
 
     switch (calcType) {
         case 'ClickCalc':
-            calculator =
-                <Box display='flex' gap='5px' flexDirection='column' justifyContent='center' alignItems='baseline' w='250px'>
-                    <Box display='flex'  w='100%' bg = 'gray.50' borderRadius='8px'>
-                        <Text display='flex' justifyContent='start' alignItems='center'  w='100%' h='38px' px='4px' >
-                            {number}
-                        </Text>
-                        <Text display = 'flex' justifyContent='end' w='fit-content' h='38px' textColor='tomato' alignItems='center'>
-                            {result}
-                        </Text>
-                    </Box>
-
-                    <Box display='flex'>
-                        <Number number={number} setNumber={setNumber}/>
-                        <Box display='flex' flexDirection='column'>
-                            <CountButton data = {number} expression={'+'} applyExpression = {applyExpression}/>
-                            <CountButton data = {number} expression={'-'} applyExpression = {applyExpression}/>
-                            <CountButton data = {number} expression={'*'} applyExpression = {applyExpression}/>
-                            <CountButton data = {number} expression={'/'} applyExpression = {applyExpression}/>
-                        </Box>
-                        <Button m = '4px' bg = 'tomato' onClick={() => {
-                            const result = eval(number);
-                            setResult(eval(number));
-                        setNumber('0');
-                        updateHistory(result);
-                        }}>=</Button>
-                    </Box>
-                </Box>;
+            calculator = <ClickCalc number={number} setNumber={setNumber} result={result} setResult={setResult} updateHistory={updateHistory} applyExpression={applyExpression}/>;
             break;
         case 'InputCalc':
             calculator = <InputCalc updateHistory = {updateHistory}/>;
             break;
-        // default:
-        //     calculator = <InputCalc/>;
+        default:
+            calculator = <ClickCalc number={number} setNumber={setNumber} result={result} setResult={setResult} updateHistory={updateHistory} applyExpression={applyExpression}/>;
+            break;
     }
 return(
     <div className="App">
         <Box display='flex' flexDirection='column' justifyContent = 'center' alignItems='center' h='100vh'>
             <Box display='flex' h='90px'>
                 {/*<HamburgerIcon w='45px' h='45px' p='5px' m='5px' borderRadius='5px'/>*/}
-                <Menu/>
+                <Menu changeAppType = {changeAppType}/>
             </Box>
             <Box display='flex'  flex-direction = 'row' m='10px'>
               <History data={history}/>
           </Box>
+            <Calculator calculator={calculator} calcTypeChange={calcTypeChange} history={history}/>
           {/*switchMode*/}
-          <Box display='flex' flexDirection='column' justifyContent='center' m='10px'>
-              <Button onClick={calcTypeChange}>
-                  Change CalcType
-              </Button>
-              <Box m='10px'>
-                  {calculator}
-              </Box>
-          </Box>
+          {/*<Box display='flex' flexDirection='column' justifyContent='center' m='10px'>*/}
+          {/*    <Button onClick={calcTypeChange}>*/}
+          {/*        Change CalcType*/}
+          {/*    </Button>*/}
+          {/*    <Box m='10px'>*/}
+          {/*        /!*{calculator}*!/*/}
+          {/*        {application}*/}
+          {/*    </Box>*/}
+          {/*</Box>*/}
 
       </Box>
 
