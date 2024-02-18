@@ -3,9 +3,9 @@ import { ListItem, UnorderedList } from '@chakra-ui/react';
 import {HamburgerIcon} from "@chakra-ui/icons";
 
 type Props = {
-    changeAppType: (mode: string) => void;
+    setMode: any;
 }
-const Menu = ({changeAppType} : Props) => {
+const Menu = ({setMode} : Props) => {
     const {isOpen, onToggle} = useDisclosure();
 
     return (
@@ -14,8 +14,8 @@ const Menu = ({changeAppType} : Props) => {
         <SlideFade in={isOpen} offsetY='-20px' unmountOnExit>
         <Box display='flex' bg='gray.100' p='10px' m='4px' borderRadius='8px' w='60%' position='absolute' zIndex='10'>
             <List display='flex' flexDirection='column' gap='10px' fontSize='20px'>
-                <Button onClick={() => changeAppType('Calculator')}>Calculator</Button>
-                <Button onClick={() => changeAppType('Converter')}>Converter</Button>
+                <Button onClick={() => setMode('Calculator')}>Calculator</Button>
+                <Button onClick={() => setMode('Converter')}>Converter</Button>
                 <Button>Settings</Button>
             </List>
         </Box>

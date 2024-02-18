@@ -39,8 +39,8 @@ const App:React.FunctionComponent = () => {
 
     const changeAppType = (mode: string) => {
         // debugger;
-        mode == 'calculator' ? setMode('Converter') : setMode('Calculator');
-        console.log(setMode);
+        mode == 'Calculator' ? setMode('Converter') : setMode('Calculator');
+        // console.log(setMode);
     }
     const calcTypeChange = () => {
         calcType == 'ClickCalc' ? setCalcType('InputCalc') : setCalcType('ClickCalc');
@@ -48,6 +48,19 @@ const App:React.FunctionComponent = () => {
 
     let application;
     let calculator;
+
+    switch (calcType) {
+        case 'ClickCalc':
+            calculator = <ClickCalc number={number} setNumber={setNumber} result={result} setResult={setResult} updateHistory={updateHistory} applyExpression={applyExpression}/>;
+            break;
+        case 'InputCalc':
+            calculator = <InputCalc updateHistory = {updateHistory}/>;
+            break;
+        default:
+            calculator = <ClickCalc number={number} setNumber={setNumber} result={result} setResult={setResult} updateHistory={updateHistory} applyExpression={applyExpression}/>;
+            break;
+    }
+
     switch (mode) {
         case 'Calculator':
             application =  <Calculator calculator={calculator} calcTypeChange={calcTypeChange} history={history}/>;
@@ -65,28 +78,19 @@ const App:React.FunctionComponent = () => {
 
 
 
-    switch (calcType) {
-        case 'ClickCalc':
-            calculator = <ClickCalc number={number} setNumber={setNumber} result={result} setResult={setResult} updateHistory={updateHistory} applyExpression={applyExpression}/>;
-            break;
-        case 'InputCalc':
-            calculator = <InputCalc updateHistory = {updateHistory}/>;
-            break;
-        default:
-            calculator = <ClickCalc number={number} setNumber={setNumber} result={result} setResult={setResult} updateHistory={updateHistory} applyExpression={applyExpression}/>;
-            break;
-    }
+
 return(
     <div className="App">
         <Box display='flex' flexDirection='column' justifyContent = 'center' alignItems='center' h='100vh'>
             <Box display='flex' h='90px'>
                 {/*<HamburgerIcon w='45px' h='45px' p='5px' m='5px' borderRadius='5px'/>*/}
-                <Menu changeAppType = {changeAppType}/>
+                <Menu setMode = {setMode}/>
             </Box>
             <Box display='flex'  flex-direction = 'row' m='10px'>
               <History data={history}/>
           </Box>
-            <Calculator calculator={calculator} calcTypeChange={calcTypeChange} history={history}/>
+            {/*<Calculator calculator={calculator} calcTypeChange={calcTypeChange} history={history}/>*/}
+            {application}
           {/*switchMode*/}
           {/*<Box display='flex' flexDirection='column' justifyContent='center' m='10px'>*/}
           {/*    <Button onClick={calcTypeChange}>*/}
