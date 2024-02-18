@@ -30,18 +30,17 @@ const App:React.FunctionComponent = () => {
     }
 
     const updateHistory = (calcResult: string) => {
-        // debugger;
         if (history.length > 6) {history.shift()}
         setHistory(history.concat(eval(calcResult)));
     }
 
 
 
-    const changeAppType = (mode: string) => {
-        // debugger;
-        mode == 'Calculator' ? setMode('Converter') : setMode('Calculator');
-        // console.log(setMode);
-    }
+    // const changeAppType = (mode: string) => {
+    //     // debugger;
+    //     mode == 'Calculator' ? setMode('Converter') : setMode('Calculator');
+    // }
+
     const calcTypeChange = () => {
         calcType == 'ClickCalc' ? setCalcType('InputCalc') : setCalcType('ClickCalc');
     };
@@ -64,15 +63,12 @@ const App:React.FunctionComponent = () => {
     switch (mode) {
         case 'Calculator':
             application =  <Calculator calculator={calculator} calcTypeChange={calcTypeChange} history={history}/>;
-            // console.log(application);
             break;
         case 'Converter':
             application = <Converter/>
-            // console.log(application);
             break;
         default:
             application =  <Calculator calculator={calculator} calcTypeChange={calcTypeChange} history={history}/>;
-            // console.log(application);
             break;
     }
 
@@ -89,19 +85,7 @@ return(
             <Box display='flex'  flex-direction = 'row' m='10px'>
               <History data={history}/>
           </Box>
-            {/*<Calculator calculator={calculator} calcTypeChange={calcTypeChange} history={history}/>*/}
             {application}
-          {/*switchMode*/}
-          {/*<Box display='flex' flexDirection='column' justifyContent='center' m='10px'>*/}
-          {/*    <Button onClick={calcTypeChange}>*/}
-          {/*        Change CalcType*/}
-          {/*    </Button>*/}
-          {/*    <Box m='10px'>*/}
-          {/*        /!*{calculator}*!/*/}
-          {/*        {application}*/}
-          {/*    </Box>*/}
-          {/*</Box>*/}
-
       </Box>
 
     </div>
