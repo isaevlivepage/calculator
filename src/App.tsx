@@ -12,14 +12,14 @@ import Menu from "./components/Menu";
 import ClickCalc from "./components/ClickCalc";
 import Converter from "./components/Converter";
 import getCurrency from "./functions/getCurrency";
-import ConverterMoney from "./components/ConverterMoney";
+import ConverterMoney from "./components/Money";
 
 
 const App:React.FunctionComponent = () => {
 
     const [number, setNumber] = useState('0');
     const [result, setResult] = useState('');
-    const [calcType, setCalcType] = useState('InputCalc');
+    const [calcType, setCalcType] = useState('ClickCalc');
     const [history, setHistory] = useState([]);
     const [mode, setMode] = useState('Calculator')
 

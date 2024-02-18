@@ -34,14 +34,14 @@ const Converter = () => {
             <Input w='50%' type='number' onChange={(e) => setInput(Number(e.target.value))}/>
 
             <Flex gap='15px'>
-                <Select ref={firstRef} size='md' w='90%' >
+                <Select ref={firstRef} size='md' w='100%' >
                     <option value='Доллар США'>Доллар США</option>
                     <option value='Рубли'>Рубли</option>
                 </Select>
             </Flex>
 
             <Flex>
-                <Select ref={secondRef} size='md' w='90%' >
+                <Select ref={secondRef} size='md' w='100%' >
                     <option value='Доллар США'>Доллар США</option>
                     <option value='Рубли'>Рубли</option>
                 </Select>

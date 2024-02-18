@@ -16,8 +16,6 @@ const Menu = ({setMode} : Props) => {
             <List display='flex' flexDirection='column' gap='10px' fontSize='20px'>
                 <Button onClick={() => setMode('Calculator')}>Calculator</Button>
                 <Button onClick={() => setMode('Converter')}>Converter</Button>
-                <Button onClick={() => setMode('Money')}>Money</Button>
-                <Button>Settings</Button>
             </List>
         </Box>
         </SlideFade>
