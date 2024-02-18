@@ -1,5 +1,6 @@
 import {Box, Flex, Text, Input, Select, Button, List, ListItem} from "@chakra-ui/react";
 import {useRef, useState} from "react";
+import Calculator from "./Calculator";
 
 
 const Converter = () => {
@@ -9,6 +10,19 @@ const Converter = () => {
 
     const [input,  setInput, ] = useState('0');
     const [result, setResult] = useState(0);
+
+    let type: any, mode = '';
+    switch (mode) {
+        case 'Calculator':
+            type =  '';
+            break;
+        case 'Converter':
+            type =  '';
+            break;
+        default:
+            type =  '';
+            break;
+    }
 
     const convert = () => {
         if(firstRef.current.value == 'Meters') {
@@ -37,6 +51,7 @@ const Converter = () => {
 
     return (
         <Flex justifyContent='center' alignItems='center' flexDirection='column' gap='10px' w='100%'>
+
 
             <Text>{result}</Text>
             <Input w='50%' type='number' onChange={(e) => setInput(e.target.value)}/>

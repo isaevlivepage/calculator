@@ -11,6 +11,8 @@ import History from "./components/History";
 import Menu from "./components/Menu";
 import ClickCalc from "./components/ClickCalc";
 import Converter from "./components/Converter";
+import getCurrency from "./functions/getCurrency";
+import ConverterMoney from "./components/ConverterMoney";
 
 
 const App:React.FunctionComponent = () => {
@@ -67,12 +69,16 @@ const App:React.FunctionComponent = () => {
         case 'Converter':
             application = <Converter/>
             break;
+        case 'Money':
+            application = <ConverterMoney/>
+            break;
         default:
             application =  <Calculator calculator={calculator} calcTypeChange={calcTypeChange} history={history}/>;
             break;
     }
 
 
+    getCurrency();
 
 
 return(
