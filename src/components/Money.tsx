@@ -3,8 +3,14 @@ import {useRef, useState} from "react";
 import Calculator from "./Calculator";
 import getCurrency from "../functions/getCurrency";
 
+type Props = {
+    data: Array<string>;
+}
+const Converter = ({data} : Props) => {
 
-const Converter = () => {
+    const selection = data.map( e => {
+        return <option key={e} value={e}>{e}</option>
+    })
 
     const firstRef = useRef<any>();
     const secondRef = useRef<any>();
@@ -17,7 +23,7 @@ const Converter = () => {
         const currencyUsd = Number(await getCurrency());
         // debugger;
         switch (secondRef.current.value) {
-            case ' Доллар США':
+            case 'Доллар США':
                 setResult(input);
                 break;
             case 'Рубли':
@@ -35,15 +41,13 @@ const Converter = () => {
 
             <Flex gap='15px'>
                 <Select ref={firstRef} size='md' w='100%' >
-                    <option value='Доллар США'>Доллар США</option>
-                    <option value='Рубли'>Рубли</option>
+                    {selection}
                 </Select>
             </Flex>
 
             <Flex>
                 <Select ref={secondRef} size='md' w='100%' >
-                    <option value='Доллар США'>Доллар США</option>
-                    <option value='Рубли'>Рубли</option>
+                    {selection}
                 </Select>
             </Flex>
 

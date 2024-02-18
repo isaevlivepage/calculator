@@ -69,9 +69,6 @@ const App:React.FunctionComponent = () => {
         case 'Converter':
             application = <Converter/>
             break;
-        case 'Money':
-            application = <ConverterMoney/>
-            break;
         default:
             application =  <Calculator calculator={calculator} calcTypeChange={calcTypeChange} history={history}/>;
             break;

@@ -4,8 +4,15 @@ import Calculator from "./Calculator";
 import getCurrency from "../functions/getCurrency";
 import converter from "./Converter";
 
+type Props = {
+    data: Array<string>;
+}
 
-const Converter = () => {
+const Converter = ({data} : Props) => {
+
+    const selection = data.map( e => {
+        return <option key={e} value={e}>{e}</option>
+    })
 
     const firstRef = useRef<any>();
     const secondRef = useRef<any>();
@@ -14,23 +21,23 @@ const Converter = () => {
     const [result, setResult] = useState<string|number>(0);
 
     const convert = () => {
-        if(firstRef.current.value == 'Meters') {
+        if(firstRef.current.value == 'Метры') {
             switch (secondRef.current.value) {
-                case 'Centimeters':
+                case 'Сантиметры':
                     setResult(Number(input) * 100);
                     break;
-                case 'Meters':
+                case 'Метры':
                     setResult(Number(input));
                     break;
             }
         }
 
-        if(firstRef.current.value == 'Centimeters') {
+        if(firstRef.current.value == 'Сантиметры') {
             switch (secondRef.current.value) {
-                case 'Meters':
+                case 'Метры':
                     setResult(Number(input) / 100);
                     break;
-                case 'Centimeters':
+                case 'Сантиметры':
                     setResult(Number(input));
                     break;
             }
@@ -47,15 +54,13 @@ const Converter = () => {
 
             <Flex gap='15px'>
                 <Select ref={firstRef} size='md' w='90%' >
-                    <option value='Meters'>Метры</option>
-                    <option value='Centimeters'>Сантиметры</option>
+                    {selection}
                 </Select>
             </Flex>
 
             <Flex>
                 <Select ref={secondRef} size='md' w='90%' >
-                    <option value='Meters'>Метры</option>
-                    <option value='Centimeters'>Сантиметры</option>
+                    {selection}
                 </Select>
             </Flex>
 

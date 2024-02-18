@@ -8,6 +8,9 @@ import Distance from "./Distance";
 
 const Converter = () => {
 
+    const dataMoney: Array<string> = ['Доллар США', 'Рубли'];
+    const dataDistance: Array<string> = ['Метры', 'Сантиметры'];
+
     const firstRef = useRef<any>();
     const secondRef = useRef<any>();
 
@@ -18,10 +21,10 @@ const Converter = () => {
     let converter;
     switch (mode){
         case 'Money':
-            converter = <Money/>;
+            converter = <Money data={dataMoney}/>;
             break;
         case 'Distance':
-            converter = <Distance/>
+            converter = <Distance data={dataDistance}/>
             break;
     }
 
@@ -46,8 +49,6 @@ const Converter = () => {
 
     return (
         <Flex justifyContent='center' alignItems='center' flexDirection='column' gap='10px' w='100%'>
-
-
             <Menu/>
             {converter}
         </Flex>
