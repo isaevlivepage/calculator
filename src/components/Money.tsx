@@ -2,11 +2,16 @@ import {Box, Flex, Text, Input, Select, Button, List, ListItem} from "@chakra-ui
 import {useRef, useState} from "react";
 import Calculator from "./Calculator";
 import getCurrency from "../functions/getCurrency";
+import { useSelector, useDispatch } from 'react-redux'
+import { updateHistory, historyState } from '../historySlice'
 
 type Props = {
     data: Array<string>;
 }
 const Converter = ({data} : Props) => {
+
+    const history = useSelector(historyState);
+    const dispatch = useDispatch();
 
     const selection = data.map( e => {
         return <option key={e} value={e}>{e}</option>
@@ -27,6 +32,7 @@ const Converter = ({data} : Props) => {
                 setResult(input);
                 break;
             case 'Рубли':
+                dispatch(updateHistory(Number(input) * currencyUsd));
                 setResult(Number(input) * currencyUsd);
                 break;
         }

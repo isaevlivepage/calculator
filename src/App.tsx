@@ -13,6 +13,8 @@ import ClickCalc from "./components/ClickCalc";
 import Converter from "./components/Converter";
 import getCurrency from "./functions/getCurrency";
 import ConverterMoney from "./components/Money";
+import { useSelector, useDispatch } from 'react-redux'
+import { updateHistory, historyState } from './historySlice'
 
 
 const App:React.FunctionComponent = () => {
@@ -22,6 +24,9 @@ const App:React.FunctionComponent = () => {
     const [calcType, setCalcType] = useState('ClickCalc');
     const [history, setHistory] = useState([]);
     const [mode, setMode] = useState('Calculator')
+
+    const historystate = useSelector(historyState).map((e:any) => {return <Button>{e}</Button>} );
+    const dispatch = useDispatch();
 
 
 
@@ -81,6 +86,7 @@ const App:React.FunctionComponent = () => {
 return(
     <div className="App">
         <Box display='flex' flexDirection='column' justifyContent = 'center' alignItems='center' h='100vh'>
+            {historystate}
             <Box display='flex' h='90px'>
                 {/*<HamburgerIcon w='45px' h='45px' p='5px' m='5px' borderRadius='5px'/>*/}
                 <Menu setMode = {setMode}/>

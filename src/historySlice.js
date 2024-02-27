@@ -8,12 +8,12 @@ export const historySlice = createSlice({
     },
     reducers: {
         updateHistory: (state, action) => {
-             // state.value.push(action.payload)
+             state.value.push(action.payload)
         },
     },
 })
 
 export const {updateHistory} = historySlice.actions;
-export const historyState = (state : any) => state.history.value;
+export const historyState = (state) => state.history.value;
 
 export default historySlice.reducer;
