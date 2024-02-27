@@ -19,7 +19,6 @@ import { updateHistory, historyState } from './historySlice'
 
 const App:React.FunctionComponent = () => {
 
-    // "@types/node": "^16.18.79",
     const [number, setNumber] = useState('0');
     const [result, setResult] = useState('');
     const [calcType, setCalcType] = useState('ClickCalc');
