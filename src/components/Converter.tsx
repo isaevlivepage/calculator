@@ -53,7 +53,6 @@ const Converter = () => {
 
     return (
         <Flex justifyContent='center' alignItems='center' flexDirection='column' gap='10px' w='100%'>
-            <Text>{history}</Text>
             <Button onClick={() => dispatch(updateHistory(result))}>Add to History</Button>
             <Menu/>
             {converter}

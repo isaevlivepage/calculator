@@ -25,7 +25,7 @@ const App:React.FunctionComponent = () => {
     const [history, setHistory] = useState([]);
     const [mode, setMode] = useState('Calculator')
 
-    const historystate = useSelector(historyState).map((e:any) => {return <Button>{e}</Button>} );
+    const historystate = useSelector(historyState).map((e:any) => {return <Button color='red' size='xs'>{e}</Button>} );
     const dispatch = useDispatch();
 
 
@@ -86,7 +86,9 @@ const App:React.FunctionComponent = () => {
 return(
     <div className="App">
         <Box display='flex' flexDirection='column' justifyContent = 'center' alignItems='center' h='100vh'>
-            {historystate}
+            <Box display='flex'>
+                {historystate}
+            </Box>
             <Box display='flex' h='90px'>
                 {/*<HamburgerIcon w='45px' h='45px' p='5px' m='5px' borderRadius='5px'/>*/}
                 <Menu setMode = {setMode}/>
