@@ -15,6 +15,7 @@ import getCurrency from "./functions/getCurrency";
 import ConverterMoney from "./components/Money";
 import { useSelector, useDispatch } from 'react-redux'
 import { updateHistory, historyState } from './historySlice'
+import { Routes, Route, Link } from 'react-router-dom'
 
 
 const App:React.FunctionComponent = () => {
@@ -95,9 +96,14 @@ return(
             </Box>
             <Box display='flex'  flex-direction = 'row' m='10px'>
               <History data={history}/>
-          </Box>
+          {/*<Routes>*/}
+          {/*    <Route path="/" element={<Calculator calculator={calculator} calcTypeChange={calcTypeChange} history={history} />} />*/}
+          {/*    <Route path="converter" element={<Converter />} />*/}
+
+          {/*</Routes>*/}
+            </Box>
             {application}
-      </Box>
+         </Box>
 
     </div>
   );
